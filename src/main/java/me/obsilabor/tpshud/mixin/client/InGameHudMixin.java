@@ -11,8 +11,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InGameHud.class)
-public class InGameHudMixin {
-    @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderStatusEffectOverlay(Lnet/minecraft/client/gui/DrawContext;)V"))
+public abstract class InGameHudMixin {
+
+    @Inject(method = "renderMiscOverlays", at = @At("HEAD"))
     private void renderTpsHud(DrawContext drawContext, float f, CallbackInfo ci) {
         if(!(MinecraftClient.getInstance().currentScreen instanceof PositionSelectionScreen)) {
             //MatrixStack matrixStack = new MatrixStack();

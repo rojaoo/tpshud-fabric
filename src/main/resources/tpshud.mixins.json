@@ -8,9 +8,6 @@
     "client.ClientPlayNetworkHandlerMixin",
     "client.InGameHudMixin"
   ],
-  "server": [
-    "server.MinecraftServerMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

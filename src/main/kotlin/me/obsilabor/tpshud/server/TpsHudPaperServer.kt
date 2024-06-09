@@ -11,11 +11,11 @@ import java.nio.ByteBuffer
 class TpsHudPaperServer : JavaPlugin(), Listener {
     override fun onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this)
-        Bukkit.getMessenger().registerOutgoingPluginChannel(this, Packets.TPS_STRING)
-        Bukkit.getMessenger().registerOutgoingPluginChannel(this, Packets.HANDSHAKE_STRING)
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, Packets.TPS)
+        Bukkit.getMessenger().registerOutgoingPluginChannel(this, Packets.HANDSHAKE)
         Bukkit.getScheduler().runTaskTimerAsynchronously(this, Runnable {
             for (player in Bukkit.getOnlinePlayers()) {
-                player.sendPluginMessage(this, Packets.TPS_STRING, ByteBuffer.allocate(8).putDouble(Bukkit.getTPS()[0]).array())
+                player.sendPluginMessage(this, Packets.TPS, ByteBuffer.allocate(8).putDouble(Bukkit.getTPS()[0]).array())
             }
         }, 0, 20L)
     }
@@ -24,7 +24,7 @@ class TpsHudPaperServer : JavaPlugin(), Listener {
     fun onPlayerJoin(event: PlayerJoinEvent) {
         Bukkit.getScheduler().runTaskLater(this, Runnable {
             logger.info("Sending handshake to ${event.player.name}")
-            event.player.sendPluginMessage(this, Packets.HANDSHAKE_STRING, byteArrayOf())
+            event.player.sendPluginMessage(this, Packets.HANDSHAKE, byteArrayOf())
         }, 40L) // Paper calls join event earlier than fabric
     }
 }

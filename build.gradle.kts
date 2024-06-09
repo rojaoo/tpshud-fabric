@@ -3,16 +3,16 @@ import com.matthewprenger.cursegradle.CurseRelation
 import com.matthewprenger.cursegradle.Options
 
 plugins {
-    kotlin("jvm") version "1.9.21"
-    kotlin("plugin.serialization") version "1.9.21"
-    id("fabric-loom") version "1.4-SNAPSHOT"
+    kotlin("jvm") version "2.0.0"
+    kotlin("plugin.serialization") version "2.0.0"
+    id("fabric-loom") version "1.6-SNAPSHOT"
     id("com.modrinth.minotaur") version "2.+"
     id("com.matthewprenger.cursegradle") version "1.4.0"
     id("java")
 }
 
 group = "me.obsilabor"
-version = "1.7.0+1.20.3"
+version = "1.7.1+1.21"
 
 repositories {
     mavenCentral()
@@ -35,15 +35,15 @@ dependencies {
      */
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     // fabric
-    minecraft("com.mojang:minecraft:1.20.3")
-    mappings("net.fabricmc:yarn:1.20.3+build.1")
-    modImplementation("net.fabricmc:fabric-loader:0.15.0")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.91.1+1.20.3")
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.10.16+kotlin.1.9.21")
+    minecraft("com.mojang:minecraft:1.20.6")
+    mappings("net.fabricmc:yarn:1.20.6+build.3")
+    modImplementation("net.fabricmc:fabric-loader:0.15.11")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.100.0+1.20.6")
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.11.0+kotlin.2.0.0")
     // modmenu
-    modApi("maven.modrinth:modmenu:9.0.0-pre.1")
+    modApi("maven.modrinth:modmenu:10.0.0-beta.1")
     // yacl
-    modImplementation("dev.isxander.yacl:yet-another-config-lib-fabric:3.3.0-beta.1+1.20.3")
+    modCompileOnly("dev.isxander.yacl:yet-another-config-lib-fabric:3.3.2+1.20.4") // This bad boy is available for 1.20.6 but not in the repository wtf?
 }
 
 tasks {
@@ -65,12 +65,18 @@ tasks {
         }
         dependsOn(remapJar)
     }
-    compileKotlin {
-        kotlinOptions.jvmTarget = "17"
-    }
     compileJava {
-        options.release.set(17)
         options.encoding = "UTF-8"
+    }
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -79,7 +85,7 @@ modrinth {
     projectId.set("tps-hud")
     versionNumber.set(project.version.toString())
     versionType.set("release")
-    gameVersions.addAll(listOf("1.20.2"))
+    gameVersions.addAll(listOf("1.20.6"))
     loaders.add("fabric")
     loaders.add("quilt")
     loaders.add("purpur")
@@ -102,7 +108,7 @@ curseforge {
 
         id = "610618"
         releaseType = "release"
-        addGameVersion("1.20.2")
+        addGameVersion("1.20.6")
         addGameVersion("Fabric")
         addGameVersion("Quilt")
 

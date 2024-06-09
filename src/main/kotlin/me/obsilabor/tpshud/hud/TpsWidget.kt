@@ -1,4 +1,4 @@
-@file:Suppress("unused", "UNUSED_PARAMETER")
+@file:Suppress("unused")
 
 package me.obsilabor.tpshud.hud
 
@@ -8,7 +8,6 @@ import me.obsilabor.tpshud.config.ConfigManager
 import me.obsilabor.tpshud.minecraft
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.render.*
-import net.minecraft.client.util.math.MatrixStack
 import org.joml.Matrix4f
 import java.awt.Color
 import kotlin.math.roundToInt

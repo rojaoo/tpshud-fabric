@@ -1,6 +1,5 @@
 package me.obsilabor.tpshud.config
 
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import me.obsilabor.tpshud.json
 import java.io.File
