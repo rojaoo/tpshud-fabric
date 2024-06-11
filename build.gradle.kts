@@ -43,7 +43,7 @@ dependencies {
     // modmenu
     modApi("maven.modrinth:modmenu:10.0.0-beta.1")
     // yacl
-    modCompileOnly("dev.isxander.yacl:yet-another-config-lib-fabric:3.3.2+1.20.4") // This bad boy is available for 1.20.6 but not in the repository wtf?
+    modCompileOnly("dev.isxander:yet-another-config-lib:3.4.4+1.20.6-fabric")
 }
 
 tasks {
