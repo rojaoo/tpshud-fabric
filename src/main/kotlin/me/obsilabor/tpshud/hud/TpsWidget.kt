@@ -74,16 +74,15 @@ object TpsWidget {
         val g = (color shr 8 and 255).toFloat() / 255.0f
         val b = (color and 255).toFloat() / 255.0f
         val var10000 = Tessellator.getInstance()
-        val bufferBuilder = var10000.buffer
         RenderSystem.setShader { GameRenderer.getPositionTexProgram() }
         RenderSystem.enableBlend()
         //RenderSystem.disableTexture()
         RenderSystem.defaultBlendFunc()
-        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR)
-        bufferBuilder.vertex(matrix, x1, y2, 0.0f).color(r, g, b, alpha).next()
-        bufferBuilder.vertex(matrix, x2, y2, 0.0f).color(r, g, b, alpha).next()
-        bufferBuilder.vertex(matrix, x2, y1, 0.0f).color(r, g, b, alpha).next()
-        bufferBuilder.vertex(matrix, x1, y1, 0.0f).color(r, g, b, alpha).next()
+        val bufferBuilder = var10000.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR)
+        bufferBuilder.vertex(matrix, x1, y2, 0.0f).color(r, g, b, alpha)
+        bufferBuilder.vertex(matrix, x2, y2, 0.0f).color(r, g, b, alpha)
+        bufferBuilder.vertex(matrix, x2, y1, 0.0f).color(r, g, b, alpha)
+        bufferBuilder.vertex(matrix, x1, y1, 0.0f).color(r, g, b, alpha)
         val buffer = bufferBuilder.end()
         BufferRenderer.drawWithGlobalProgram(buffer)
         //RenderSystem.enableTexture()

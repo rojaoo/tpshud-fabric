@@ -5,14 +5,14 @@ import com.matthewprenger.cursegradle.Options
 plugins {
     kotlin("jvm") version "2.0.0"
     kotlin("plugin.serialization") version "2.0.0"
-    id("fabric-loom") version "1.6-SNAPSHOT"
+    id("fabric-loom") version "1.7-SNAPSHOT"
     id("com.modrinth.minotaur") version "2.+"
     id("com.matthewprenger.cursegradle") version "1.4.0"
     id("java")
 }
 
 group = "me.obsilabor"
-version = "1.7.1+1.21"
+version = "1.7.2+1.21"
 
 repositories {
     mavenCentral()
@@ -35,10 +35,10 @@ dependencies {
      */
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     // fabric
-    minecraft("com.mojang:minecraft:1.20.6")
-    mappings("net.fabricmc:yarn:1.20.6+build.3")
+    minecraft("com.mojang:minecraft:1.21")
+    mappings("net.fabricmc:yarn:1.21+build.7")
     modImplementation("net.fabricmc:fabric-loader:0.15.11")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.100.0+1.20.6")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.100.4+1.21")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.11.0+kotlin.2.0.0")
     // modmenu
     modApi("maven.modrinth:modmenu:10.0.0-beta.1")
@@ -85,7 +85,7 @@ modrinth {
     projectId.set("tps-hud")
     versionNumber.set(project.version.toString())
     versionType.set("release")
-    gameVersions.addAll(listOf("1.20.6"))
+    gameVersions.addAll(listOf("1.21"))
     loaders.add("fabric")
     loaders.add("quilt")
     loaders.add("purpur")
@@ -108,7 +108,7 @@ curseforge {
 
         id = "610618"
         releaseType = "release"
-        addGameVersion("1.20.6")
+        addGameVersion("1.21")
         addGameVersion("Fabric")
         addGameVersion("Quilt")
 
