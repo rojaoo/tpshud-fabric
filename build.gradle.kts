@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "me.obsilabor"
-version = "1.7.2+1.21"
+version = "1.7.3+1.21"
 
 repositories {
     mavenCentral()
@@ -41,9 +41,9 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:0.100.4+1.21")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.11.0+kotlin.2.0.0")
     // modmenu
-    modApi("maven.modrinth:modmenu:10.0.0-beta.1")
+    modApi("maven.modrinth:modmenu:11.0.1")
     // yacl
-    modCompileOnly("dev.isxander:yet-another-config-lib:3.4.4+1.20.6-fabric")
+    modApi("dev.isxander:yet-another-config-lib:3.5.0+1.21-fabric")
 }
 
 tasks {
