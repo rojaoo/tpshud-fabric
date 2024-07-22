@@ -53,7 +53,7 @@ object TpsWidget {
             copy = 20.0f
         }
         return if(tps.toString().contains(".")) {
-            copy.toString().split(".")[0]
+            copy.toString()
         } else {
             copy.toString()
         }
